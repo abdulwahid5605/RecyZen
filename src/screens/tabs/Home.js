@@ -4,6 +4,9 @@ import Header from '../../common/Header';
 import {useNavigation} from '@react-navigation/native';
 import Category from '../../common/Category';
 import ScrapCollector from '../../common/ScrapCollectors';
+import PostPublicly from '../../common/PostPublicly';
+const {height, width} = Dimensions.get('window');
+
 const Home = () => {
   const navigation = useNavigation();
   return (
@@ -43,10 +46,56 @@ const Home = () => {
           },
         ]}
       />
-      <View>
-        <Text style={styles.heading}>Scrap Collectors</Text>
+      <View style={styles.bgColor}>
+        <View>
+          <Text style={styles.heading}>Scrap Collectors</Text>
+        </View>
+        <ScrapCollector
+          data={[
+            {
+              imageUrl: require('../../images/scOne.jpg'),
+              name: 'Abdul Wahid',
+              email: 'abdulwahid@gmail.com',
+              phone: '03202977960',
+            },
+            {
+              imageUrl: require('../../images/scTwo.jpg'),
+              name: 'Saeed Ali',
+              email: 'saeedali@gmail.com',
+              phone: '03202977960',
+            },
+            {
+              imageUrl: require('../../images/scThree.jpg'),
+              name: 'Abrar Ahmed',
+              email: 'abrarahmed@gmail.com',
+              phone: '03202977960',
+            },
+          ]}
+        />
+        <View>
+          <Text style={styles.heading}>Post Publicly</Text>
+        </View>
+        <PostPublicly
+          data={[
+            {
+              imageUrl: require('../../images/plastic.jpeg'),
+              text: 'Plastic',
+            },
+            {
+              imageUrl: require('../../images/metal.jpeg'),
+              text: 'Metal',
+            },
+            {
+              imageUrl: require('../../images/paper.jpg'),
+              text: 'Paper',
+            },
+            {
+              imageUrl: require('../../images/bottle.png'),
+              text: 'Bottle',
+            },
+          ]}
+        />
       </View>
-      <ScrapCollector />
     </View>
   );
 };
@@ -63,5 +112,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     color: '#808080',
+    marginVertical: 19,
+  },
+  bgColor: {
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    backgroundColor: '#fff',
+    paddingTop: 10,
+    marginTop: 12,
   },
 });

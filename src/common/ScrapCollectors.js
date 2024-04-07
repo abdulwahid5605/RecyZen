@@ -1,26 +1,25 @@
 import React from 'react';
 import {View, Image, ScrollView, StyleSheet, Text} from 'react-native';
 
-const ScrapCollector = () => {
+const ScrapCollector = ({data}) => {
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
-        <View style={styles.imageRow}>
-          <View style={styles.childContainer}>
-            <View style={styles.textContainer}>
-              <Text style={styles.text}>name</Text>
-              <Text style={styles.text}>email</Text>
-              <Text style={styles.text}>contact</Text>
+        {data.map((item, i) => (
+          <View style={styles.imageRow}>
+            <View style={styles.childContainer}>
+              <View style={styles.textContainer}>
+                <Text style={styles.text}>{item.name}</Text>
+                <Text style={styles.text}>{item.email}</Text>
+                <Text style={styles.text}>{item.phone}</Text>
+              </View>
+              <View>
+                <Image source={item.imageUrl} style={styles.image} />
+              </View>
             </View>
-            <View>
-              <Image
-                source={require('../images/scTwo.jpg')}
-                style={styles.image}
-              />
-            </View>
+            <Text style={styles.title}></Text>
           </View>
-          <Text style={styles.title}></Text>
-        </View>
+        ))}
       </ScrollView>
     </View>
   );
@@ -48,21 +47,21 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     overflow: 'hidden',
     height: 120,
-    width: 250,
+    width: 260,
     justifyContent: 'space-evenly',
     alignItems: 'center',
     flexDirection: 'row',
   },
   image: {
-    width: 130,
-    height: 100,
+    width: 110,
+    height: 80,
     // tintColor: '#808080',
     resizeMode: 'cover',
     borderRadius: 10,
   },
 
   text: {
-    fontSize: 16,
+    fontSize: 10,
     color: '#808080',
   },
 
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
     height: 100,
     fontSize: 16,
     color: '#808080',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
   },
 });
 
