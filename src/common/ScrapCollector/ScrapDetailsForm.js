@@ -19,8 +19,9 @@ const MyForm = () => {
   const [input2, setInput2] = useState('');
   const [input3, setInput3] = useState('');
   const [input4, setInput4] = useState('');
+  const [input5, setInput5] = useState('');
+
   const [images, setImages] = useState([]);
-  const [description, setDescription] = useState('');
 
   const handleImageUpload = image => {
     // Handle image upload here
@@ -73,23 +74,26 @@ const MyForm = () => {
           value={input4}
           onChangeText={text => setInput4(text)}
         />
+        <TextInput
+          style={styles.input}
+          placeholder="Description"
+          value={input4}
+          onChangeText={text => setInput5(text)}
+        />
         <View style={styles.uploadContainer}>
-          <TouchableOpacity onPress={handleImageUpload}>
-            <Text>Upload Images</Text>
+          <TouchableOpacity
+            onPress={handleImageUpload}
+            style={styles.uploadbutton}>
+            <Text style={styles.uploadbuttonText}>Upload Images</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.imageContainer}>
           {/* Display selected images here */}
         </View>
         {/* Display uploaded images here */}
-        <TextInput
-          style={[styles.input, styles.textArea]}
-          placeholder="Description"
-          multiline
-          value={description}
-          onChangeText={text => setDescription(text)}
-        />
-        <Button title="Submit" onPress={handleSubmit} />
+        <TouchableOpacity onPress={handleSubmit} style={styles.button}>
+          <Text style={styles.buttonText}>Submit</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -119,36 +123,60 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     padding: 20,
     borderRadius: 10,
-    borderColor: 'black',
-    borderWidth: 1,
   },
   input: {
-    borderWidth: 1,
-    borderColor: 'gray',
     borderRadius: 5,
     marginBottom: 10,
     padding: 10,
+    backgroundColor: 'white',
   },
-  textArea: {
-    height: 100,
-  },
+
   common: {
     backgroundColor: 'white',
     borderRadius: 10,
     color: 'gray',
+    marginBottom: 10,
   },
   uploadContainer: {
     marginBottom: 10,
   },
   imageContainer: {
     borderWidth: 1,
-    borderRadius: 10, // A large number for a full round border
+    borderRadius: 5,
     borderColor: 'gray',
-    width: '100%', // Adjust as needed
-    height: 80, // Adjust as needed
+    width: '100%',
+    height: 80,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
+  },
+  button: {
+    backgroundColor: '#50C2C9',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    borderRadius: 30,
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 16,
+    letterSpacing: 2,
+    fontWeight: 'bold',
+  },
+
+  uploadbutton: {
+    backgroundColor: '#50C2C9',
+    paddingHorizontal: 5,
+    paddingVertical: 5,
+    borderRadius: 30,
+    width: 140,
+  },
+  uploadbuttonText: {
+    letterSpacing: 0,
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 });
 
