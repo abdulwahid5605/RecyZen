@@ -4,7 +4,7 @@ import {View, Image, ScrollView, StyleSheet, Text} from 'react-native';
 const Category = ({data}) => {
   return (
     <View style={styles.container}>
-      <ScrollView horizontal>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={styles.imageRow}>
           {data.map((item, i) => (
             <View key={i} style={styles.itemContainer}>

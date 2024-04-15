@@ -10,9 +10,9 @@ import React from 'react';
 
 const PostPublicly = ({data}) => {
   return (
-    <ScrollView horizontal>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       {data.map((item, i) => (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container} key={i}>
           <Image source={item.imageUrl} style={styles.image} />
           <Text style={styles.text}>{item.text}</Text>
         </TouchableOpacity>

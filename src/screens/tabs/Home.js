@@ -1,10 +1,10 @@
 import {View, Text, StyleSheet, Dimensions, Image} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import Header from '../../common/Header';
+import Header from '../../common/Home/Header';
 import {useNavigation} from '@react-navigation/native';
-import Category from '../../common/Category';
-import ScrapCollector from '../../common/ScrapCollectors';
-import PostPublicly from '../../common/PostPublicly';
+import Category from '../../common/Home/Category';
+import ScrapCollector from '../../common/Home/ScrapCollectors';
+import PostPublicly from '../../common/Home/PostPublicly';
 const {height, width} = Dimensions.get('window');
 
 const Home = () => {

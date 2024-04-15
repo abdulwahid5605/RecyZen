@@ -1,24 +1,38 @@
 import React from 'react';
-import {View, Image, ScrollView, StyleSheet, Text} from 'react-native';
+import {
+  View,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const ScrapCollector = ({data}) => {
+  const navigation = useNavigation();
+  const handlePress = () => {
+    navigation.navigate('ScrapCollector');
+  };
   return (
     <View style={styles.container}>
-      <ScrollView horizontal>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {data.map((item, i) => (
-          <View style={styles.imageRow}>
-            <View style={styles.childContainer}>
-              <View style={styles.textContainer}>
-                <Text style={styles.text}>{item.name}</Text>
-                <Text style={styles.text}>{item.email}</Text>
-                <Text style={styles.text}>{item.phone}</Text>
+          <TouchableOpacity onPress={handlePress}>
+            <View style={styles.imageRow} key={i}>
+              <View style={styles.childContainer}>
+                <View style={styles.textContainer}>
+                  <Text style={styles.text}>{item.name}</Text>
+                  <Text style={styles.text}>{item.email}</Text>
+                  <Text style={styles.text}>{item.phone}</Text>
+                </View>
+                <View>
+                  <Image source={item.imageUrl} style={styles.image} />
+                </View>
               </View>
-              <View>
-                <Image source={item.imageUrl} style={styles.image} />
-              </View>
+              <Text style={styles.title}></Text>
             </View>
-            <Text style={styles.title}></Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>
