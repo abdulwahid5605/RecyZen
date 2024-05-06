@@ -17,7 +17,10 @@ const ScrapCollectorDetails = ({data}) => {
     navigation.navigate('ScrapCollector');
   };
   return (
-    <ScrollView style={styles.scrollView} horizontal>
+    <ScrollView
+      style={styles.scrollView}
+      horizontal
+      showsHorizontalScrollIndicator={false}>
       {data.map((item, i) => (
         <TouchableOpacity onPress={handlePress} key={i}>
           <View style={styles.container}>

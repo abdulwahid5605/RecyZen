@@ -4,12 +4,11 @@ import {
   Text,
   TextInput,
   ScrollView,
-  Button,
   StyleSheet,
-  Image,
   TouchableOpacity,
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
+import SuccessPopup from './SuccessPopUp';
 
 const categories = ['Plastic', 'Metal', 'Paper', 'Electronic', 'Car'];
 
@@ -20,6 +19,7 @@ const MyForm = () => {
   const [input3, setInput3] = useState('');
   const [input4, setInput4] = useState('');
   const [input5, setInput5] = useState('');
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const [images, setImages] = useState([]);
 
@@ -30,7 +30,11 @@ const MyForm = () => {
 
   const handleSubmit = () => {
     // Handle form submission here
-    console.log('Form submitted!');
+    setShowSuccessPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowSuccessPopup(false);
   };
 
   return (
@@ -77,7 +81,7 @@ const MyForm = () => {
         <TextInput
           style={styles.input}
           placeholder="Description"
-          value={input4}
+          value={input5}
           onChangeText={text => setInput5(text)}
         />
         <View style={styles.uploadContainer}>
@@ -94,6 +98,7 @@ const MyForm = () => {
         <TouchableOpacity onPress={handleSubmit} style={styles.button}>
           <Text style={styles.buttonText}>Submit</Text>
         </TouchableOpacity>
+        {showSuccessPopup && <SuccessPopup onClose={handleClosePopup} />}
       </View>
     </ScrollView>
   );
